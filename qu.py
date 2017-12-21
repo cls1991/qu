@@ -141,7 +141,7 @@ def cli():
 @click.option('-bn', '--bucket_name', help='qiniu bucket_name.')
 @click.option('-dm', '--domain_name', help='qiniu domain_name.')
 def wc(**kwargs):
-    """Set config of qiniu."""
+    """Set configuration of qiniu."""
     for k in kwargs:
         if not kwargs[k]:
             click.echo('{0} cannot be empty!'.format(k))
@@ -153,7 +153,7 @@ def wc(**kwargs):
 @cli.command()
 @click.option('--format-type', type=click.Choice(['json', 'xml']), default='json', help='output format type.')
 def sc(format_type):
-    """Show config of qiniu."""
+    """Show configuration of qiniu."""
     if not _check_exist():
         click.echo(
             click.style('{0} not exists, please run `qu set_config` to set config first.'.format(CONFIG_CFG),

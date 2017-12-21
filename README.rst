@@ -29,13 +29,14 @@ Set configuration of qiniu:
 
 ::
 
-    $ qu wc --access_key AK --secret_key SK --bucket_name BN --domain_name DN
+    $ qu wc --access_key=AK --secret_key=SK --bucket_name=BN --domain_name=DN
 
 List local configuration of qiniu:
 
 ::
 
-    $ gy sc
+    $ qu sc
+    $ qu sc --format-type json
 
 ☤ Installation
 --------------
@@ -60,9 +61,9 @@ You can install "qu" via pip from `PyPI <https://pypi.python.org/pypi/qu>`_:
       --help  Show this message and exit.
 
     Commands:
-      sc      Show config of qiniu.
+      sc      Show configuration of qiniu.
       upload  Upload an image to qiniu.
-      wc      Set config of qiniu.
+      wc      Set configuration of qiniu.
 
 
     $ qu wc --help

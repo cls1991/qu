@@ -8,7 +8,7 @@ with open('README.rst', 'r') as f:
 
 setup(
     name='qu',
-    version='1.0.1',
+    version='1.0.3',
     keywords=['qiniu', 'upload', 'blog'],
     description='Quickly generating unique url of a picture for markdown files.',
     long_description=readme,
