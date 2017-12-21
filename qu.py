@@ -193,11 +193,11 @@ def upload(file_path, key):
         sys.exit(1)
 
     if not _check_exist(file_path):
-        click.secho(click.style('{0} is not found.'.format(file_path), fg='yellow'))
+        click.secho(click.style('{0} is not found.'.format(_encode(file_path)), fg='yellow'))
         sys.exit(1)
 
     if not _check_extension(file_path):
-        click.secho(click.style('{0} is not supported.'.format(file_path), fg='yellow'))
+        click.secho(click.style('{0} is not supported.'.format(_encode(file_path)), fg='yellow'))
         sys.exit(1)
 
     ok, msg = _upload(file_path, key)
