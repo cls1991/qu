@@ -108,3 +108,6 @@ ENV/
 
 # qiniu sdk cache
 .qiniu_pythonsdk_hostscache.json
+
+# qiniu config
+.config.cfg
