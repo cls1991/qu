@@ -8,7 +8,7 @@ with open('README.rst', 'r') as f:
 
 setup(
     name='qu',
-    version='1.0.0',
+    version='1.0.1',
     keywords=['qiniu', 'upload', 'blog'],
     description='Quickly generating unique url of a picture for markdown files.',
     long_description=readme,
@@ -17,6 +17,7 @@ setup(
     url='https://github.com/cls1991/qu',
     py_modules=['qu'],
     install_requires=[
+        'qiniu>=7.2.0',
         'click>=6.7',
         'pytest>=3.3.1'
     ],
