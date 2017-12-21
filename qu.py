@@ -156,7 +156,7 @@ def sc(format_type):
     """Show configuration of qiniu."""
     if not _check_exist():
         click.echo(
-            click.style('{0} not exists, please run `qu set_config` to set config first.'.format(CONFIG_CFG),
+            click.style('{0} not exists, please run `qu sc` to set configuration first.'.format(CONFIG_CFG),
                         fg='yellow'))
         sys.exit(1)
 
@@ -169,7 +169,7 @@ def sc(format_type):
 def upload(file_path, key):
     """Upload an image to qiniu."""
     if not _check_exist():
-        click.echo(click.style('{0} not exists, please run `qu set_config` to set config first.'.format(CONFIG_CFG),
+        click.echo(click.style('{0} not exists, please run `qu sc` to set configuration first.'.format(CONFIG_CFG),
                                fg='yellow'))
         sys.exit(1)
 
