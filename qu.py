@@ -34,10 +34,10 @@ def _write_cfg(data):
     config = ConfigParser.ConfigParser()
     config.add_section(SECTION)
 
-    for k, v in data.iteritems():
+    for k, v in data.items():
         config.set(SECTION, k, v)
 
-    with open(os.path.join(HERE, CONFIG_CFG), 'wb') as f:
+    with open(os.path.join(HERE, CONFIG_CFG), 'w') as f:
         config.write(f)
 
 
