@@ -18,6 +18,14 @@ from qiniu import (
     Auth, etag, put_file
 )
 
+_ver = sys.version_info
+
+# Python 2.x?
+is_py2 = (_ver[0] == 2)
+
+# Python 3.x?
+is_py3 = (_ver[0] == 3)
+
 HERE = os.path.abspath(os.path.dirname(__file__))
 CONFIG_CFG = '.config.cfg'
 SECTION = 'qn'
@@ -108,12 +116,23 @@ def _upload(file_path, key=None):
     q = Auth(access_key, secret_key)
     if not key:
         key = _get_name(file_path)
-    token = q.upload_token(bucket_name, key, 3600)
-    ret, info = put_file(token, key, file_path)
+    token = q.upload_token(bucket_name, _encode(key), 3600)
+    ret, info = put_file(token, _encode(key), _encode(file_path))
 
     suc = ret['key'] == key and ret['hash'] == etag(file_path)
 
-    return True, '{0}://{1}/{2}'.format(PROTOCOL, domain_name, key) if suc else (False, info.error)
+    return True, '{0}://{1}/{2}'.format(PROTOCOL, domain_name, _encode(key)) if suc else (False, info.error)
+
+
+def _encode(u):
+    """
+    :param u:
+    :return:
+    """
+    if is_py2 and isinstance(u, unicode):
+        return u.encode('utf8')
+
+    return u
 
 
 def _format(data, format_type='json'):
