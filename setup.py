@@ -8,7 +8,7 @@ with open('README.rst', 'r') as f:
 
 setup(
     name='qu',
-    version='1.1.0',
+    version='1.2.4',
     keywords=['qiniu', 'upload', 'blog'],
     description='Quickly generating unique url of a picture for markdown files.',
     long_description=readme,
@@ -21,8 +21,12 @@ setup(
         'click>=6.7',
         'pytest>=3.3.1'
     ],
+    package_data={
+        'config': ['.config.cfg']
+    },
     license='Apache License 2.0',
     zip_safe=False,
+    platforms='any',
     entry_points={
         'console_scripts': ['qu = qu:cli']
     },

@@ -34,6 +34,10 @@ def test_qu_sc():
     assert execute(['qu', 'sc', '--format_type', 'json'])
 
 
+def test_qu_dc():
+    assert execute(['qu', 'dc'])
+
+
 def test_qu_help():
     assert execute(['qu', '--help'])
     assert execute(['qu', 'wc', '--help'])

@@ -15,6 +15,9 @@ qu
 
 Quickly generating unique url of a picture for markdown files.
 
+.. image:: https://asciinema.org/a/41WfW5ehC7RRXQ8WA4unZG5WY.png
+    :target: https://asciinema.org/a/41WfW5ehC7RRXQ8WA4unZG5WY
+
 ☤ Quickstart
 ------------
 
@@ -55,12 +58,13 @@ You can install "qu" via pip from `PyPI <https://pypi.python.org/pypi/qu>`_:
     $ qu --help
     Usage: qu [OPTIONS] COMMAND [ARGS]...
 
-    Quickly generating unique url of a picture for markdown files.
+      Quickly generating unique url of a picture for markdown files.
 
     Options:
       --help  Show this message and exit.
 
     Commands:
+      dc      Clear configuration of qiniu.
       sc      Show configuration of qiniu.
       upload  Upload an image to qiniu.
       wc      Set configuration of qiniu.
@@ -69,7 +73,7 @@ You can install "qu" via pip from `PyPI <https://pypi.python.org/pypi/qu>`_:
     $ qu wc --help
     Usage: qu wc [OPTIONS]
 
-    Set configuration of qiniu.
+      Set configuration of qiniu.
 
     Options:
       -ak, --access_key TEXT   qiniu access_key.
@@ -81,6 +85,8 @@ You can install "qu" via pip from `PyPI <https://pypi.python.org/pypi/qu>`_:
 
     $ qu sc --help
     Usage: qu sc [OPTIONS]
+
+      Show configuration of qiniu.
 
     Options:
       --format-type [json|xml]  output format type.

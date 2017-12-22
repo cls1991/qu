@@ -27,6 +27,7 @@ is_py2 = (_ver[0] == 2)
 is_py3 = (_ver[0] == 3)
 
 HERE = os.path.abspath(os.path.dirname(__file__))
+CONFIG_DIR = 'config'
 CONFIG_CFG = '.config.cfg'
 SECTION = 'qn'
 PROTOCOL = 'http'
@@ -45,7 +46,10 @@ def _write_cfg(data):
     for k, v in data.items():
         config.set(SECTION, k, v)
 
-    with open(os.path.join(HERE, CONFIG_CFG), 'w') as f:
+    parent = os.path.join(HERE, CONFIG_DIR)
+    if not _check_exist(parent):
+        os.mkdir(parent)
+    with open(os.path.join(parent, CONFIG_CFG), 'w') as f:
         config.write(f)
 
 
@@ -54,7 +58,7 @@ def _read_cfg():
     :return: 
     """
     config = ConfigParser.ConfigParser()
-    config.read(os.path.join(HERE, CONFIG_CFG))
+    config.read(os.path.join(HERE, CONFIG_DIR, CONFIG_CFG))
 
     cfg = dict()
 
@@ -64,13 +68,22 @@ def _read_cfg():
     return cfg
 
 
+def _del_cfg():
+    """
+    :return:
+    """
+    path = os.path.join(HERE, CONFIG_DIR, CONFIG_CFG)
+    if _check_exist(path):
+        os.remove(path)
+
+
 def _check_exist(file_path=None):
     """
     :param file_path:
     :return:
     """
     if not file_path:
-        file_path = os.path.join(HERE, CONFIG_CFG)
+        file_path = os.path.join(HERE, CONFIG_DIR, CONFIG_CFG)
 
     return os.path.exists(file_path)
 
@@ -175,11 +188,18 @@ def sc(format_type):
     """Show configuration of qiniu."""
     if not _check_exist():
         click.echo(
-            click.style('{0} not exists, please run `qu sc` to set configuration first.'.format(CONFIG_CFG),
+            click.style('{0} not exists, please run `qu wc` to set configuration first.'.format(CONFIG_CFG),
                         fg='yellow'))
         sys.exit(1)
 
     click.secho(click.style(_format(_read_cfg(), format_type), fg='green'))
+
+
+@cli.command()
+def dc():
+    """Clear configuration of qiniu."""
+    _del_cfg()
+    click.secho(click.style('Clear completed.', fg='green'))
 
 
 @cli.command()
@@ -188,7 +208,7 @@ def sc(format_type):
 def upload(file_path, key):
     """Upload an image to qiniu."""
     if not _check_exist():
-        click.echo(click.style('{0} not exists, please run `qu sc` to set configuration first.'.format(CONFIG_CFG),
+        click.echo(click.style('{0} not exists, please run `qu wc` to set configuration first.'.format(CONFIG_CFG),
                                fg='yellow'))
         sys.exit(1)
 
