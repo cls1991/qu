@@ -25,8 +25,8 @@ Upload an image file to qiniu:
 
 ::
 
-    $ qu /somewhere/1.png 2.png
-    $ qu /somewhere/1.png
+    $ qu up /somewhere/1.png
+    $ qu up /somewhere/1.png 2.png
 
 Set configuration of qiniu:
 
@@ -66,7 +66,7 @@ You can install "qu" via pip from `PyPI <https://pypi.python.org/pypi/qu>`_:
     Commands:
       dc      Clear configuration of qiniu.
       sc      Show configuration of qiniu.
-      upload  Upload an image to qiniu.
+      up      Upload an image to qiniu.
       wc      Set configuration of qiniu.
 
 

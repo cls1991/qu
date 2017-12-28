@@ -205,7 +205,7 @@ def dc():
 @cli.command()
 @click.argument('file_path')
 @click.argument('key', required=False)
-def upload(file_path, key):
+def up(file_path, key):
     """Upload an image to qiniu."""
     if not _check_exist():
         click.echo(click.style('{0} not exists, please run `qu wc` to set configuration first.'.format(CONFIG_CFG),
